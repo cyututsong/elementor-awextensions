@@ -1,0 +1,208 @@
+/* Timeline Widget Start */
+
+.rtimeline {
+  position: relative;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.page-content a {
+    text-decoration: none;
+}
+
+/* -------------------------------------------
+   ANIMATED TIMELINE LINE
+------------------------------------------- */
+.rtimeline::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 3px;
+  height: var(--line-height, 0);
+  background: #a2ad97;
+  transform: translateX(-50%);
+  transition: height 0.85s cubic-bezier(0.25, 0.1, 0.25, 1.4); /* delayed smooth */
+}
+
+
+/* Base item layout */
+.rtimeline-item {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+  margin: 50px 0;
+  position: relative;
+  justify-content: space-around;
+  width: 100%;
+}
+
+/* Marker dot */
+.rtimeline-item::before {
+  content: "";
+  width: 25px;
+  height: 25px;
+  background: #a2ad97;
+  border-radius: 50%;
+  position: absolute;
+  left: 50%;
+  top: 0;
+  transform: translateX(-50%) scale(0); /* start hidden */
+  opacity: 0;                          /* start invisible */
+  transition: transform 0.35s ease-out, opacity 0.35s ease-out;
+}
+
+/* activated / visible */
+.rtimeline-item.active::before {
+  transform: translateX(-50%) scale(1);
+  opacity: 1;
+}
+
+.rtimeline-image img {
+  transform: scale(0.8); /* start smaller */
+  opacity: 0;
+  transition: transform 0.6s cubic-bezier(0.68, -0.55, 0.27, 1.55) 0.3s,
+              opacity 0.6s ease-out 0.3s; /* 0.3s delay */
+}
+
+.rtimeline-image.animated img {
+  transform: scale(1); /* zoom in */
+  opacity: 1;
+}
+
+/* Content & Image */
+.rtime {
+    width: 40%;
+    padding: 10px 20px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.rtimeline-image img {
+    width: 20rem;
+    height: 20rem;
+    object-fit: cover;
+    border-radius: 100%;
+    border: 3px solid #a2ad97;
+    padding: 7px;
+}
+
+
+.rtimeline-content {
+  max-width: 500px;
+  align-items: flex-start;
+  opacity: 0;
+  transform: translateY(20px); /* nakababa ng konti */
+  transition: all 0.6s ease-out;
+}
+
+.rtimeline-content.animated {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Title, Date, Desc */
+.rtimeline-date {
+  font-weight: bold;
+  color: #a2ad97;
+  margin-bottom: 8px;
+}
+
+.rtimeline-title {
+  margin: 0 0 10px;
+  font-size: 26px;
+}
+
+.rtimeline-description {
+  margin: 0;
+  opacity: 0.8;
+}
+
+.rtimeline .rtimeline-item:last-of-type::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: -20px;
+  transform: translateX(-50%) scale(0);
+  opacity: 0;
+  width: 25px;
+  height: 25px;
+  border-radius: 100%;
+  background: #a2ad97;
+  transform-origin: center;
+  transition: transform 0.35s ease-out 600ms, opacity 0.35s ease-out 600ms;
+
+}
+
+.rtimeline-item:last-of-type.active::after {
+  transform: translateX(-50%) scale(1);
+  opacity: 1;
+}
+
+
+/* -------------------------------------------
+   ALTERNATING LEFT/RIGHT LAYOUT
+------------------------------------------- */
+
+/* LEFT SIDE (image left, text right) */
+.rtimeline-left {
+  flex-direction: row;
+}
+
+/* RIGHT SIDE (image right, text left) */
+.rtimeline-right {
+  flex-direction: row-reverse;
+}
+
+
+/* -------------------------------------------
+   RESPONSIVE MOBILE (STACKED)
+------------------------------------------- */
+
+@media (max-width: 768px) {
+  .rtimeline {
+    padding-left: 0;
+  }
+
+  .rtimeline::before {
+    left: 20px; /* Move to left for mobile */
+    transform: none;
+  }
+
+  .rtimeline-item {
+    flex-direction: column !important;
+    text-align: center;
+    gap: 20px;
+  }
+
+  .rtimeline-item::before {
+    left: 22px;
+    transform: none;
+  }
+
+  .rtime {
+    width: 100%;
+  }
+
+  .rtimeline-image img {
+    width: 260px;
+    height: 260px;
+    margin: 0 auto;
+  }
+
+
+.rtimeline-content {
+    padding-left: 70px;
+    padding-right: 50px;
+    text-align: left;
+}
+
+.rtimeline-item:last-of-type.active::after {
+   left: 22px;
+}
+
+
+}
+/* Timeline Widget Ends */
