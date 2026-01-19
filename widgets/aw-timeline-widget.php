@@ -97,6 +97,21 @@ class RTimeline_Widget extends Widget_Base {
             ]
         );
 
+        $this->add_control(
+            'timeline_style',
+            [
+                'label' => 'Timeline Style',
+                'type' => Controls_Manager::SELECT,
+                'default' => 'storyline',
+                'options' => [
+                    'storyline' => 'Story Line',
+                    'weddingprogram'      => 'Wedding Program',
+                ],
+            ]
+        );
+
+
+
         $this->end_controls_section();
 
 

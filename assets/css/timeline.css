@@ -13,7 +13,7 @@
 /* -------------------------------------------
    ANIMATED TIMELINE LINE
 ------------------------------------------- */
-.rtimeline::before {
+.rtimeline-style-storyline .rtimeline::before {
   content: "";
   position: absolute;
   top: 0;
@@ -27,7 +27,7 @@
 
 
 /* Base item layout */
-.rtimeline-item {
+.rtimeline-style-storyline .rtimeline-item {
   display: flex;
   align-items: center;
   gap: 30px;
@@ -38,7 +38,7 @@
 }
 
 /* Marker dot */
-.rtimeline-item::before {
+.rtimeline-style-storyline .rtimeline-item::before {
   content: "";
   width: 25px;
   height: 25px;
@@ -53,25 +53,25 @@
 }
 
 /* activated / visible */
-.rtimeline-item.active::before {
+.rtimeline-style-storyline .rtimeline-item.active::before {
   transform: translateX(-50%) scale(1);
   opacity: 1;
 }
 
-.rtimeline-image img {
+.rtimeline-style-storyline .rtimeline-image img {
   transform: scale(0.8); /* start smaller */
   opacity: 0;
   transition: transform 0.6s cubic-bezier(0.68, -0.55, 0.27, 1.55) 0.3s,
               opacity 0.6s ease-out 0.3s; /* 0.3s delay */
 }
 
-.rtimeline-image.animated img {
+.rtimeline-style-storyline .rtimeline-image.animated img {
   transform: scale(1); /* zoom in */
   opacity: 1;
 }
 
 /* Content & Image */
-.rtime {
+.rtimeline-style-storyline .rtime {
     width: 40%;
     padding: 10px 20px;
     margin: 0 auto;
@@ -80,7 +80,7 @@
     align-items: center;
 }
 
-.rtimeline-image img {
+.rtimeline-style-storyline .rtimeline-image img {
     width: 20rem;
     height: 20rem;
     object-fit: cover;
@@ -90,7 +90,7 @@
 }
 
 
-.rtimeline-content {
+.rtimeline-style-storyline .rtimeline-content {
   max-width: 500px;
   align-items: flex-start;
   opacity: 0;
@@ -98,19 +98,19 @@
   transition: all 0.6s ease-out;
 }
 
-.rtimeline-content.animated {
+.rtimeline-style-storyline .rtimeline-content.animated {
   opacity: 1;
   transform: translateY(0);
 }
 
 /* Title, Date, Desc */
-.rtimeline-date {
+.rtimeline-style-storyline .rtimeline-date {
   font-weight: bold;
   color: #a2ad97;
   margin-bottom: 8px;
 }
 
-.rtimeline-title {
+.rtimeline-style-storyline .rtimeline-title {
   margin: 0 0 10px;
   font-size: 26px;
 }
@@ -120,7 +120,7 @@
   opacity: 0.8;
 }
 
-.rtimeline .rtimeline-item:last-of-type::after {
+.rtimeline-style-storyline .rtimeline .rtimeline-item:last-of-type::after {
   content: "";
   position: absolute;
   left: 50%;
@@ -136,7 +136,7 @@
 
 }
 
-.rtimeline-item:last-of-type.active::after {
+.rtimeline-style-storyline .rtimeline-item:last-of-type.active::after {
   transform: translateX(-50%) scale(1);
   opacity: 1;
 }
@@ -147,12 +147,12 @@
 ------------------------------------------- */
 
 /* LEFT SIDE (image left, text right) */
-.rtimeline-left {
+.rtimeline-style-storyline .rtimeline-left {
   flex-direction: row;
 }
 
 /* RIGHT SIDE (image right, text left) */
-.rtimeline-right {
+.rtimeline-style-storyline .rtimeline-right {
   flex-direction: row-reverse;
 }
 
