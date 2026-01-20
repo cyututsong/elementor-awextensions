@@ -149,28 +149,42 @@
     max-width: 700px;
     margin: 0 auto;
     padding: 40px 0;
+    display: flex;
+    flex-direction: column;
+}
+
+.rtimeline-style-weddingprogram .rtimeline-item:nth-child(odd) {
+    left: 43%;
+}
+
+.rtimeline-style-weddingprogram .rtimeline-item:nth-child(even){
+    flex-direction: row-reverse;
 }
 
 /* CENTER VERTICAL LINE */
 .rtimeline-style-weddingprogram::before {
     content: '';
     position: absolute;
-    top: 0;
-    bottom: 0;
+    top: 50px;
+    bottom: 15%;
     left: 50%;
-    width: 2px;
+    width: 3px;
     background: #d9b27c;
     transform: translateX(-50%);
 }
 
 /* ITEM */
 .rtimeline-style-weddingprogram .rtimeline-item {
-    display: grid;
-    grid-template-columns: 1fr 60px 1fr;
+    display: flex;
     align-items: center;
-    margin-bottom: 50px;
+    margin-bottom: 80px;
     position: relative;
+    max-width: 400px;
+    width: 100%;
+    justify-content: flex-start;
+    gap: 50px;
 }
+
 
 /* TIME (LEFT) */
 .rtimeline-style-weddingprogram .rtimeline-date {
@@ -190,7 +204,7 @@
 }
 
 .rtimeline-style-weddingprogram .rtimeline-image img {
-    width: 36px;
+    width: 100px;
     height: auto;
     background: #fff;
     padding: 6px;
