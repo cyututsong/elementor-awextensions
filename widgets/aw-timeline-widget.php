@@ -202,7 +202,9 @@ class RTimeline_Widget extends Widget_Base {
 
         if ( empty( $settings['timeline_list'] ) ) return;
 
-        echo '<div class="rtimeline">';
+        $timeline_style = $settings['timeline_style'] ?? 'storyline';
+
+        echo '<div class="rtimeline  rtimeline-style-' . esc_attr( $timeline_style ) . '">';
 
         $i = 0; // counter for alternation
 

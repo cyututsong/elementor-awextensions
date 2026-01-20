@@ -142,6 +142,75 @@
 }
 
 
+
+/* MAIN WRAPPER */
+.rtimeline-style-weddingprogram {
+    position: relative;
+    max-width: 700px;
+    margin: 0 auto;
+    padding: 40px 0;
+}
+
+/* CENTER VERTICAL LINE */
+.rtimeline-style-weddingprogram::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 50%;
+    width: 2px;
+    background: #d9b27c;
+    transform: translateX(-50%);
+}
+
+/* ITEM */
+.rtimeline-style-weddingprogram .rtimeline-item {
+    display: grid;
+    grid-template-columns: 1fr 60px 1fr;
+    align-items: center;
+    margin-bottom: 50px;
+    position: relative;
+}
+
+/* TIME (LEFT) */
+.rtimeline-style-weddingprogram .rtimeline-date {
+    text-align: right;
+    font-weight: 600;
+    font-size: 14px;
+    color: #8b6b3d;
+    padding-right: 20px;
+}
+
+/* ICON (CENTER) */
+.rtimeline-style-weddingprogram .rtimeline-image {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 2;
+}
+
+.rtimeline-style-weddingprogram .rtimeline-image img {
+    width: 36px;
+    height: auto;
+    background: #fff;
+    padding: 6px;
+}
+
+/* CONTENT (RIGHT) */
+.rtimeline-style-weddingprogram .rtimeline-content {
+    padding-left: 20px;
+}
+
+.rtimeline-style-weddingprogram .rtimeline-title {
+    font-size: 16px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin: 0;
+    color: #6f4f2f;
+}
+
+
+
 /* -------------------------------------------
    ALTERNATING LEFT/RIGHT LAYOUT
 ------------------------------------------- */
