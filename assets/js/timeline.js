@@ -1,94 +1,56 @@
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener("DOMContentLoaded", () => {
 
-// ----------------------------
-// TIMELINE ANIMATION
-// ----------------------------
-/* helper: update timeline state */
+  function updateTimeline() {
 
-function updateTimeline() {
-  const timeline = document.querySelector(".rtimeline");
-  if (!timeline) return;
+    document.querySelectorAll(".rtimeline-style-storyline").forEach(timeline => {
 
-  const rect = timeline.getBoundingClientRect();
-  const windowHeight = window.innerHeight;
+      const items = timeline.querySelectorAll(".rtimeline-item");
+      const timelineRect = timeline.getBoundingClientRect();
+      const windowHeight = window.innerHeight;
 
-  const start = windowHeight;
-  const end = rect.height + windowHeight;
+      // Progress for line animation (CSS variable)
+      let progress = (windowHeight - timelineRect.top) /
+                     (timelineRect.height + windowHeight);
 
-  let progress = (start - rect.top) / (end - start);
-  progress = Math.max(0, Math.min(progress, 1));
+      progress = Math.max(0, Math.min(progress, 1));
+      timeline.style.setProperty("--line-height", `${progress * 100}%`);
 
-  // set css var for visual line
-  timeline.style.setProperty("--line-height", (progress * 100) + "%");
+      items.forEach(item => {
 
-  // -----------------------
-  // compute line height
-  // -----------------------
-    const lineHeightNow = parseFloat(getComputedStyle(timeline, "::before").height) || 0;
+        const itemRect = item.getBoundingClientRect();
+        const content  = item.querySelector(".rtimeline-content");
+        const image    = item.querySelector(".rtimeline-image");
 
-    const items = Array.from(document.querySelectorAll(".rtimeline-item"));
+        // Item enters viewport
+        if (itemRect.top < windowHeight * 0.85) {
 
-    items.forEach(item => {
-      const itemTop = item.offsetTop; // distance from top of timeline
-      const content = item.querySelector(".rtimeline-content");
-      const contImage = item.querySelector(".rtimeline-image");
+          item.classList.add("active");
+          
+          if (content) {
+            content.classList.add("animated", "animated-slow", "fadeInUp");
+          }
 
-      // ANIMATION CONDITION
-      if (lineHeightNow >= itemTop) {
-        item.classList.add("active");
-        if (content && !content.classList.contains("animated")) {
-          content.classList.add("animated-slow", "animated", "fadeInUp");
+          if (image) {
+            image.classList.add("animated");
+          }
+
+        } else {
+          item.classList.remove("active");
+
+          if (content) {
+            content.classList.remove("animated", "animated-slow", "fadeInUp");
+          }
+
+          if (image) {
+            image.classList.remove("animated");
+          }
         }
-        if (contImage && !contImage.classList.contains("animated")) {
-          contImage.classList.add("animated");
-        }
-      } else {
-        item.classList.remove("active");
-        if (content) {
-          content.classList.remove("animated-slow", "animated", "fadeInUp");
-        }
-        if (contImage) {
-          contImage.classList.remove("animated");
-        }
-      }
+
+      });
     });
-
-    // ⭐ Add active to LAST item
-    const lastItem = items[items.length - 1];
-    if (lastItem) {
-      const lastItemTop = lastItem.offsetTop;
-      if (lineHeightNow >= lastItemTop) {
-        lastItem.classList.add("active");
-      }
-    }
-
-    
-    // -------------------------------
-    // FIRST ITEM FALLBACK (ONLY IF VISIBLE)
-    // -------------------------------
-    if (items.length) {
-      const first = items[0];
-      const firstRect = first.getBoundingClientRect();
-      const firstContent = first.querySelector(".rtimeline-content");
-      const firstImage = first.querySelector(".rtimeline-image");
-
-      // Check if first item is visible in viewport (top < window height)
-      if (firstRect.top < windowHeight * 0.95) {
-        first.classList.add("active");
-        if (firstContent && !firstContent.classList.contains("animated")) {
-          firstContent.classList.add("animated-slow", "animated", "fadeInUp");
-        }
-        if (firstImage && !firstImage.classList.contains("animated")) {
-          firstImage.classList.add("animated");
-        }
-      }
-    }
   }
 
-  /* wire events */
   window.addEventListener("scroll", updateTimeline, { passive: true });
   window.addEventListener("resize", updateTimeline);
-  window.addEventListener("DOMContentLoaded", updateTimeline);
-  window.addEventListener("load", updateTimeline);
-
+  updateTimeline(); // initial trigger
 });

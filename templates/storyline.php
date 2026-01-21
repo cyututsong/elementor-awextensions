@@ -1,35 +1,60 @@
 <?php
-echo '<div class="rtimeline  rtimeline-style-' . esc_attr( $timeline_style ) . '">';
+echo '<div class="rtimeline rtimeline-style-' . esc_attr( $timeline_style ) . '">';
 
-$i = 0; // counter for alternation
+$index = 0; // Counter for left / right alignment
 
 foreach ( $settings['timeline_list'] as $item ) {
 
-    $image_url = isset($item['timeline_image']['url']) ? $item['timeline_image']['url'] : '';
+    /**
+     * Get image URL (supports Elementor image array)
+     */
+    $image_url = '';
 
-    // Add alternating class
-    $alignment = ($i % 2 == 0) ? 'left' : 'right';
+    if ( ! empty( $item['timeline_image'] ) && is_array( $item['timeline_image'] ) ) {
+        $image_url = ! empty( $item['timeline_image']['url'] )
+            ? $item['timeline_image']['url']
+            : '';
+    }
 
-    echo '<div class="rtimeline-item rtimeline-' . $alignment . '">';
+    /**
+     * Alternate alignment
+     */
+    $alignment = ( $index % 2 === 0 ) ? 'left' : 'right';
+    ?>
 
-    // IMAGE
-    echo '<div class="rtime rtimeline-image">';
-        if ( $image_url ) {
-            echo '<img src="'.esc_url($image_url).'" alt="'.esc_attr($item['timeline_title']).'">';
-        }
-    echo '</div>';
+    <div class="rtimeline-item rtimeline-<?php echo esc_attr( $alignment ); ?>">
 
-    // TEXT CONTENT
-    echo '<div class="rtime rtimeline-content animated-slow animated fadeInUp">';
-        echo '<div class="rtimeline-date">'.esc_html($item['timeline_date']).'</div>';
-        echo '<h2 class="rtimeline-title">'.esc_html($item['timeline_title']).'</h2>';
-        echo '<p class="rtimeline-description">'.esc_html($item['timeline_description']).'</p>';
-    echo '</div>';
+        <!-- Image -->
+        <div class="rtime rtimeline-image">
+            <?php if ( $image_url ) : ?>
+                <img
+                    src="<?php echo esc_url( $image_url ); ?>"
+                    alt="<?php echo esc_attr( $item['timeline_title'] ); ?>"
+                >
+            <?php endif; ?>
+        </div>
 
-    echo '</div>';
+        <!-- Content -->
+        <div class="rtime rtimeline-content">
 
-    $i++;
+            <div class="rtimeline-date">
+                <?php echo esc_html( $item['timeline_date'] ); ?>
+            </div>
+
+            <h2 class="rtimeline-title">
+                <?php echo esc_html( $item['timeline_title'] ); ?>
+            </h2>
+
+            <p class="rtimeline-description">
+                <?php echo esc_html( $item['timeline_description'] ); ?>
+            </p>
+
+        </div>
+
+    </div>
+
+    <?php
+    $index++;
 }
 
 echo '</div>';
-?>
