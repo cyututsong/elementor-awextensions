@@ -182,16 +182,31 @@
 }
 
 /* CENTER VERTICAL LINE */
-.rtimeline-style-weddingprogram::before {
+.rtimeline-style-weddingprogram .rtimeline-item .rtimeline-image::before {
     content: '';
     position: absolute;
-    top: 50px;
-    bottom: 15%;
+    top: 100%;
+    bottom: -80%;
     left: 50%;
     width: 3px;
     background: #d9b27c;
     transform: translateX(-50%);
 }
+
+.rtimeline-style-weddingprogram .rtimeline-item .rtimeline-image {
+  position:relative
+}
+
+.rtimeline-style-weddingprogram .rtimeline-item:last-child {
+    margin-bottom: 0px;
+}
+
+
+.rtimeline-style-weddingprogram .rtimeline-item:last-child .rtimeline-image::before {
+    display: none;
+}
+
+
 
 /* ITEM */
 .rtimeline-style-weddingprogram .rtimeline-item {
@@ -226,7 +241,6 @@
 .rtimeline-style-weddingprogram .rtimeline-image img {
     width: 100px;
     height: auto;
-    background: #fff;
     padding: 6px;
 }
 
