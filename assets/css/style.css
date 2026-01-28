@@ -176,3 +176,19 @@
 }
 
 
+/* Adding color pallet section css */
+
+.magicpattern { 
+  width: 250px;
+  height:250px;
+  background-size: cover;
+  background-position: center center;
+  background-repeat: repeat;
+  -webkit-mask: url("data:image/svg+xml;utf8,%3Csvg viewBox='0 0 1000 1000' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M579 632.5Q347 765 324 460t232-132.5q255 172.5 23 305Z'/%3E%3C/svg%3E") no-repeat center;
+  -webkit-mask-size: contain;
+  mask: url("data:image/svg+xml;utf8,%3Csvg viewBox='0 0 1000 1000' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M579 632.5Q347 765 324 460t232-132.5q255 172.5 23 305Z'/%3E%3C/svg%3E") no-repeat center;
+
+  mask-size: contain;  
+  
+}
+
