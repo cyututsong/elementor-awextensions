@@ -308,7 +308,7 @@
 
 
 .rtimeline-style-weddingprogram .rtimeline-item:nth-child(odd) {
-    left: 43%;
+    left: 0%;
 }
 
 .rtimeline-style-weddingprogram .rtimeline-content {
@@ -318,7 +318,7 @@
 
 .rtimeline-style-weddingprogram .rtimeline-date {
     text-align: center;
-    padding:0px;
+    padding:0px!important;
 }
 
 
@@ -331,6 +331,7 @@
 .rtimeline-style-weddingprogram .rtimeline-item {
     gap: 0;
 }
+
 
 
 }
