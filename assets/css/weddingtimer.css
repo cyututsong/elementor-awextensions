@@ -29,6 +29,17 @@
     .serenity .ctn {
         font-size: 40px;
     }
+
+    .countdown .ctn {
+        min-width:unset; 
+    }
+
+    .countdown {
+        width: 100%;
+        gap: 2vw;
+    }
+
+
 }
 
 

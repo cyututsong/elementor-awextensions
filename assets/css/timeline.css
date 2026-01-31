@@ -306,5 +306,34 @@
 }
 
 
+
+.rtimeline-style-weddingprogram .rtimeline-item:nth-child(odd) {
+    left: 43%;
+}
+
+.rtimeline-style-weddingprogram .rtimeline-content {
+    padding: 0px;
+    text-align: center;
+}
+
+.rtimeline-style-weddingprogram .rtimeline-date {
+    text-align: center;
+    padding:0px;
+}
+
+
+.rtimeline-style-weddingprogram .rtimeline-item .rtimeline-image::before {
+    top: 200%;
+    bottom: -150%;
+}
+
+
+.rtimeline-style-weddingprogram .rtimeline-item {
+    gap: 0;
+}
+
+
 }
 /* Timeline Widget Ends */
+
+
