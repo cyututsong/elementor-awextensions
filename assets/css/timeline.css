@@ -142,6 +142,8 @@
 }
 
 
+
+
 /* -------------------------------------------
    ALTERNATING LEFT/RIGHT LAYOUT
 ------------------------------------------- */
@@ -334,7 +336,18 @@
 
 
 
+/* Wedding story Timeline */
+
+.rtimeline-style-storyline .rtime {
+    width: 100%;
+}
+
+.rtimeline-style-storyline .rtimeline-content {
+  padding-left: 15%;
+}
+
+.rtimeline-style-storyline .rtimeline-item::before {
+  left:5%;
+}
 }
 /* Timeline Widget Ends */
-
-
