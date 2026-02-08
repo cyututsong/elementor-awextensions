@@ -21,6 +21,18 @@ add_action( 'elementor/element/wp-page/document_settings/after_section_end', fun
         ]
     );
 
+    $element->add_control(
+        'ft_music_bg_color',
+        [
+            'label' => __( 'Player Color', 'ft-music' ),
+            'type'  => \Elementor\Controls_Manager::COLOR,
+            'default' => '#D6C1AE',
+            'selectors' => [
+                '{{WRAPPER}} .music-btn' => '--ft-music-color: {{VALUE}};',
+            ],
+        ]
+    );
+
     $element->end_controls_section();
 }, 10, 2 );
 

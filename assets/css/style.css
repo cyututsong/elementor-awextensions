@@ -1,4 +1,9 @@
 .music-btn {
+  --ft-music-color: #D6C1AE;
+}
+
+
+.music-btn {
   position: fixed;
   bottom: 20px;
   right: 20px;
@@ -6,8 +11,8 @@
   height: 60px;
   border-radius: 50%;
   border: none;
-  background: #ff4081;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+  background-color: var(--ft-music-color);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2)!important;
   cursor: pointer;
   display: flex;
   align-items: center;
@@ -16,8 +21,13 @@
   z-index: 9999;
 }
 
+.music-btn:focus, .music-btn:not(:focus) {
+    background-color: var(--ft-music-color)!important;  
+}
+
 .music-btn:hover {
   transform: scale(1.1);
+  background-color: var(--ft-music-color)!important;
 }
 
 .music-btn img {
@@ -34,7 +44,7 @@
   width: 60px;
   height: 60px;
   border-radius: 50%;
-  border: 2px solid rgba(255, 64, 129, 0.5);
+  border: 2px solid var(--ft-music-color);
   transform: translate(-50%, -50%) scale(1);
   animation: pulse 1.8s infinite ease-out;
 }
@@ -49,6 +59,8 @@
     opacity: 0;
   }
 }
+
+
 /* FALLING LEAVES ANIMATION CSS */
 
 .fallingLeavesSection {
@@ -175,20 +187,4 @@
     }   
 }
 
-
-/* Adding color pallet section css */
-
-.magicpattern { 
-  width: 250px;
-  height:250px;
-  background-size: cover;
-  background-position: center center;
-  background-repeat: repeat;
-  -webkit-mask: url("data:image/svg+xml;utf8,%3Csvg viewBox='0 0 1000 1000' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M579 632.5Q347 765 324 460t232-132.5q255 172.5 23 305Z'/%3E%3C/svg%3E") no-repeat center;
-  -webkit-mask-size: contain;
-  mask: url("data:image/svg+xml;utf8,%3Csvg viewBox='0 0 1000 1000' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M579 632.5Q347 765 324 460t232-132.5q255 172.5 23 305Z'/%3E%3C/svg%3E") no-repeat center;
-
-  mask-size: contain;  
-  
-}
 
