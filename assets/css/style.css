@@ -82,7 +82,7 @@
 .falling-leaves div{
     position: absolute;
     display:block;
-    scale: 0.4;
+    scale: 0.3;
 }
 
 .falling-leaves div:nth-child(1)  {
